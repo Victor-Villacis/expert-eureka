@@ -1,6 +1,9 @@
 var express = require("express");
 var app = express();  //as needed do things, let the errors drive where you head. Do not skip ahead. 
 var PORT = 3000; // it is smart to have your port up here
+var bodyParser = require('body-parser'); // this allows req.body to be parsed
+
+app.use(body-parser)
 
 var exphbs = require('express-handlebars'); //exphbs means express handlebars
 app.engine('handlebars', exphbs ({defaultLayout: 'main'}));
@@ -22,14 +25,24 @@ app.get("/", function (req, res) {
     //html =""; this could be done, but this is for junior developers, we are mid level now
     //html += ""
     if(err) throw(err)
-  res.send(data);
+ 
   });
-
-          //res.send("Welcome to the homepage"); //sends to homepage just to check your code and node app are connecting to the page
-
+res.direct("/");
+          //res.send("Welcome to the homepage or data"); //sends to homepage just to check your code and node app are connecting to the page
+          // res.send(data);
 });
+
+app.post("/create", function(req, res) {
+  connection.query("INSERT INTO quick_notes (note) VALUES (?)", + [req.body.note], /* the second argument is an array as you are passing the ?*/, 
+function() {if (err) throw err;
+});
+//res.send()
+res.direct("/");
+   })
+
 
 app.listen(PORT, function() {
   console.log("running on port %s", PORT);
 });
 
+//templating is happening on the server

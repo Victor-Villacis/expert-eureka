@@ -1,9 +1,38 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html>
 <head>
   <title></title>
 </head>
 <body>
+<h1>Quick notes </h1>
+  <div> 
+    {{#each data}}
+    <div>
+     <span> {{this.id}} {{this.note}} </span>
+    </div>
+  </div>
+
 {{{ body }}}
 </body>
-</html>
+
+when submitting forms you do not always want to put a get request since you wont send a lot fo data, a post request sends more data. 
+
+You could store data in a bunch of diffrent places, you could even send it off to firebase
+llok out for seque injection as you might have malicious people trying to DROP your tables, thus a ? is good
+</html> -->
+
+<h1>Quick Notes</h1>
+
+<div>
+  {{#each data}}
+  <div>
+    <span> {{this.id}} {{this.note}}</span>
+  </div>
+  {{/each}}
+</div>
+
+<form action="/create method=POST">
+<textarea></textarea>
+
+ </form>
+
